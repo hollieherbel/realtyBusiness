@@ -8,15 +8,46 @@
     height: 300px;
     max-height: 100%;
 
-
-    .login-modal {
+    .login-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        justify-content: space-evenly;
+      
+    
+    .text-wrapper {
         display: flex;
         width: 100%;
         justify-content: center;
         color: rgb(76, 160, 108);
+        font-family: 'Noto Sans HK', sans-serif;
+        font-size: 20px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+}
+
+    .input-box {
+        display: flex;
+        width: 200px;
+        height: 30px;
+        justify-content: space-around;
+        
     }
     
     .modal-button {
         background-color: rgb(76, 160, 108);
+        width: 150px;
+        height: 45px;
+        color: white;
+        border: none; 
+        font-family: 'Noto Sans HK', sans-serif;
+        font-size: 20px;
+
+        &:hover {
+           background-color: rgb(216, 184, 114);  
+        }
     }
+
+}
 }

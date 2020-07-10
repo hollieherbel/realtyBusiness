@@ -52,7 +52,7 @@ export default class Navigation extends Component {
                             transform: "translate(-50%, -50%)",
                             width: "500px",
                             height: "300px",
-                            backgroundColor: "rgba(250, 250, 210, 0.911)",
+                            backgroundColor: "white",
                             outline: "none",
                             borderRadius: "3px"
 
@@ -62,10 +62,10 @@ export default class Navigation extends Component {
                             backgroundColor: "rgba(1, 1, 1, 0.75)"
                         }
                     }}
-                    ><div>
-                        <h3 className="login-modal">Please Login</h3> 
-                        <input type="text" placeholder="Username"></input>
-                        <input type="password" placeholder="Password"></input>
+                    ><div className="login-wrapper">
+                        <h3 className="text-wrapper">Please Login</h3> 
+                        <input className="input-box" type="text" placeholder="Username"></input>
+                        <input className="input-box" type="password" placeholder="Password"></input>
                         <button className="modal-button">Log In</button>
                     </div>
                     </ReactModal>

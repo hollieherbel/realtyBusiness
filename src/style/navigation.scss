@@ -1,49 +1,14 @@
 .navigation-wrapper {
-    display: flex;
-    flex-direction: row;
-
+    display: grid;
+    width: 400px;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
 
     img {
-        height: 143px;
+        height: 150px;
         width: 150px;
-        border-radius: 5px;
-        box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
-
     }
 
-        .nav-links {
-        display: flex;
-        flex-direction: 8row;
-        align-items: center;
-        width: 43%;
-        height: 143px;
-        justify-content: space-evenly;
-        margin-top: 62px;
-        text-decoration: none;
-        font-size: 18px;
-        background-color: rgba(250, 250, 210, 0.911);
-        border-radius: 5px;
-        box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
-
-        
-        .left-side-links {
-            text-decoration: none;
-            color: rgb(76, 160, 108);
-
-
-            &:hover {
-                color: rgb(216, 184, 114);
-                transition: 0.3s ease-in-out;
-            }
-        }
-        
-       
-    }
 }
-
-
-
-
 
     
 

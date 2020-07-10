@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Plants from '../../photos/plants.jpg'
 
 
 export default class HomePage extends Component {
@@ -6,7 +7,7 @@ export default class HomePage extends Component {
         super(props)
 
         this.state = {
-       
+
         }
         
 
@@ -16,10 +17,10 @@ export default class HomePage extends Component {
 
     render() {
         return (
-            <div className='homepage-wrapper'>
-                Home
-                
-            </div>
+          <div 
+          className="homepage">
+              HomePage
+          </div>
         )
     }
 }
