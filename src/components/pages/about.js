@@ -13,10 +13,10 @@ export default class  extends Component {
     render() {
         return (
             <div className='about-wrapper'>
-                <h3>About Olivia</h3>
                 <img className="headshot-photo"
                 src={Headshot} alt="Headshot"
                 ></img>
+                <div className="about-color-block">colorme</div>
             </div>
         )
     }

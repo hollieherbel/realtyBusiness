@@ -35,9 +35,7 @@ export default class Navigation extends Component {
    
     render() {
         return (
-            <div className=''>
-                    <div className='navigation-wrapper'>
-            <div className="nav-links">
+           <div className="nav-links">
                     <img src={Logo} alt="logo" />
                     <ReactModal 
                     className="login-modal-wrapper" 
@@ -52,7 +50,7 @@ export default class Navigation extends Component {
                             transform: "translate(-50%, -50%)",
                             width: "500px",
                             height: "300px",
-                            backgroundColor: "white",
+                            backgroundColor: "rgb(255, 255, 255)",
                             outline: "none",
                             borderRadius: "3px"
 
@@ -79,8 +77,7 @@ export default class Navigation extends Component {
 
 
 
-        </div>
-            </div>
+        
         )
     }
 }

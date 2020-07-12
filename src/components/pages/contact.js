@@ -11,8 +11,10 @@ export default class  extends Component {
 
     render() {
         return (
-            <div className=''>
-                Contact
+            <div className='contact-wrapper'>
+                <div className="contact-phone"></div>
+                <div className="contact-email"></div>
+                <div className="contact-address"></div>
             </div>
         )
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Plants from '../../photos/plants.jpg'
+import Key from '../../photos/key.jpg'
 
 
 export default class HomePage extends Component {
@@ -17,9 +17,10 @@ export default class HomePage extends Component {
 
     render() {
         return (
-          <div 
-          className="homepage">
-              HomePage
+          <div className="homepage-wrapper">
+            <img src={Key} alt="Key"></img>
+            <div className="home-color-block">colorme</div>
+            <div className="second-home-color-block"></div>
           </div>
         )
     }

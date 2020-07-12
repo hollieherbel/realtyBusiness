@@ -1,16 +1,34 @@
-.navigation-wrapper {
-    display: grid;
-    width: 400px;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
-
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    width: 50%;
+    height: 150px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    justify-content: space-around;
+    align-items: center;
+   
+    
+    
     img {
         height: 150px;
         width: 150px;
     }
 
-}
 
-    
+    .left-side-links {
+        color: rgb(76, 160, 101);
+        text-decoration: none;
+        font-size: 22px;
+
+
+        &:hover {
+            color: rgb(218, 181, 111);
+            cursor: pointer;
+        }
+    }
+}
 
 
 

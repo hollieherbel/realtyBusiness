@@ -1,0 +1,36 @@
+.homepage-wrapper {
+    display: flex;
+    flex-direction: row;
+
+    img {
+        margin-top: 100px;
+        margin-left: 350px;
+        height: 500px;
+        width: 700px;
+        border-radius: 5px;
+    }
+
+    .home-color-block {
+        position: absolute;
+        background-color: rgb(218, 180, 111);
+        z-index: -1;
+        height: 600px;
+        width: 400px;
+        margin-left: 200px;
+        margin-top: 50px;
+        border-radius: 5px;
+        color: transparent;
+    }
+
+    .second-home-color-block {
+        position: absolute;
+        background-color: rgb(76, 160, 101);
+        z-index: -2;
+        height: 400px;
+        width: 500px;
+        margin-left: 700px;
+        border-radius: 5px;
+        color: transparent;
+    
+    }
+}

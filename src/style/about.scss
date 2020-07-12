@@ -1,0 +1,22 @@
+.about-wrapper {
+    display: flex;
+    flex-direction: row;
+
+    img {
+        display: flex;
+        height: 500px;
+        margin-top: 50px;
+        margin-left: 400px;
+        border-radius: 5px;
+    }
+    
+    .about-color-block {
+        position: absolute;
+        background-color: rgb(218, 180, 111);
+        z-index: -1;
+        width: 600px;
+        height: 400px;
+        margin-left: 600px;
+
+    }
+}
