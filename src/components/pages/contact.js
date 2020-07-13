@@ -1,4 +1,14 @@
 import React, { Component } from 'react'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPaperPlane, faPhoneVolume, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
+
+library.add(
+    faPaperPlane,
+    faPhoneVolume,
+    faMapMarkerAlt
+)
 
 export default class  extends Component {
     constructor(props) {
@@ -12,9 +22,15 @@ export default class  extends Component {
     render() {
         return (
             <div className='contact-wrapper'>
-                <div className="contact-phone"></div>
-                <div className="contact-email"></div>
-                <div className="contact-address"></div>
+                <div className="contact-phone">
+                    <FontAwesomeIcon icon={faPhoneVolume} />
+                </div>
+                <div className="contact-email">
+                    <FontAwesomeIcon icon={faPaperPlane} />
+                </div>
+                <div className="contact-address">
+                    <FontAwesomeIcon icon={faMapMarkerAlt} />
+                </div>
             </div>
         )
     }

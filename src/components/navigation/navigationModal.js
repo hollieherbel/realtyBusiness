@@ -10,11 +10,17 @@ export default class Navigation extends Component {
 
         this.state = {
             modalOpen: false,
-            loginLink: "visible"
+            loginLink: "visible",
+            username: "",
+            password: "",
+            error: "",
+            loggedin: false
         }
 
        
         this.toggleLoginModal = this.toggleLoginModal.bind(this)
+        this.handleLogin = this.handleLogin.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
     
@@ -30,6 +36,24 @@ export default class Navigation extends Component {
                 modalOpen: false
             })
         } 
+    }
+
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    handleLogin(event) {
+        if (event.target.name === "Olivia" && event.target.name === "realtor") {
+            this.setState({
+                loggedin: true
+            })
+        } else {
+            this.setState({
+                error: "Wrong Login Credentials"
+            })
+        }
     }
 
    
@@ -62,9 +86,20 @@ export default class Navigation extends Component {
                     }}
                     ><div className="login-wrapper">
                         <h3 className="text-wrapper">Please Login</h3> 
-                        <input className="input-box" type="text" placeholder="Username"></input>
-                        <input className="input-box" type="password" placeholder="Password"></input>
-                        <button className="modal-button">Log In</button>
+                        <input className="input-box" type="text" 
+                        placeholder="Username" 
+                        name={this.state.username}
+                        value={this.state.username} 
+                        onChange={this.handleChange}>     
+                        </input>
+                        <input className="input-box" type="password" 
+                        placeholder="Password" 
+                        name={this.state.password}
+                        value={this.state.password} 
+                        onChange={this.handleChange}>
+                        </input>
+                        <button className="modal-button" onClick={this.handleLogin}>Log In</button>
+                        <h3>{this.state.error}</h3>
                     </div>
                     </ReactModal>
                     <a className="left-side-links" onClick={this.toggleLoginModal}>Log In</a>

@@ -7,13 +7,18 @@ export default class Listings extends Component {
         super(props)
 
         this.state = {
-          
+            address: "",
+            city: ""
         }
         
-   
-
     }
 
+    componentDidMount() {
+        this.setState({
+            address: this.props.address,
+            city: this.props.city
+        })
+    }
  
 
 
@@ -21,7 +26,7 @@ export default class Listings extends Component {
     render() {
         return (
             <div className='listings-wrapper'>
-                {this.props.address}
+              <h1>{this.state.address}</h1>
              
             </div>
         )
