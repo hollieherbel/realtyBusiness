@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPaperPlane, faPhoneVolume, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Plants from "../../photos/plants.jpg"
 
 
 library.add(
@@ -22,15 +23,23 @@ export default class  extends Component {
     render() {
         return (
             <div className='contact-wrapper'>
-                <div className="contact-phone">
-                    <FontAwesomeIcon icon={faPhoneVolume} />
+              
+                <div className="contact-color-block">
+                 <div className="contact-info">
+                    <FontAwesomeIcon className="icon-phone" icon={faPhoneVolume} />
+                   <br />555-555-5555
                 </div>
-                <div className="contact-email">
-                    <FontAwesomeIcon icon={faPaperPlane} />
+                <div className="contact-info">
+                    <FontAwesomeIcon className="icon-email" icon={faPaperPlane} />
+                    <br />olivia@realtor.com
                 </div>
-                <div className="contact-address">
-                    <FontAwesomeIcon icon={faMapMarkerAlt} />
+                <div className="contact-info">
+                    <FontAwesomeIcon className="icon-address" icon={faMapMarkerAlt} />
+                    <br /> 123 Main Street<br /> Hays, KS 67601
                 </div>
+                </div>
+                    <img src={Plants} alt="Plants"></img>
+                
             </div>
         )
     }
