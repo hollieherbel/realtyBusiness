@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 import Navigation from './navigation/navigationModal';
 import Home from './pages/home';
 import Listings from './pages/listings';
@@ -16,14 +15,16 @@ export default class App extends Component {
         listingList: []
       
       }
+
       this.getListings = this.getListings.bind(this)
       this.renderListings = this.renderListings.bind(this)
     
   }
   
     componentDidMount() {
-        this.getListings()
+      this.getListings()
     }
+ 
 
     getListings() {
         fetch("http://127.0.0.1:5000/listing/get", { method: "GET" })
@@ -33,17 +34,17 @@ export default class App extends Component {
     }
 
     renderListings() {
-        return this.state.listingList.map(listing => {
-            return <Listings 
-            key={listing.id}
-            address={listing.address}
-            city={listing.city}
-            state={listing.state}
-            zipcode={listing.zipcode}
-            />
-            
-        })
-    }
+      return this.state.listingList.map(listing => {
+        return <Listings 
+        key={listing.id}
+        address={listing.address}
+        city={listing.city}
+        state={listing.state}
+        zipcode={listing.zipcode}
+        />
+          
+      })
+  }
   
   render() {
     return (
@@ -52,7 +53,10 @@ export default class App extends Component {
         <Navigation />
           <Switch>
           <Route exact path="/"component={Home} />
-          <Route path="/listings" onClick={this.renderListings()} component={Listings} />
+          <Route exact path="/listings" 
+          render={props => <Listings 
+          address={this.renderListings(this.state.address, this.state.city, this.state.state, this.state.zipcode)} 
+          {...props} />} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
         </Switch>

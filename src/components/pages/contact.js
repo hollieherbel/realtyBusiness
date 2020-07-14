@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPaperPlane, faPhoneVolume, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import Plants from "../../photos/plants.jpg"
+import Decor from "../../photos/decor.jpg"
 
 
 library.add(
@@ -38,7 +38,7 @@ export default class  extends Component {
                     <br /> 123 Main Street<br /> Hays, KS 67601
                 </div>
                 </div>
-                    <img src={Plants} alt="Plants"></img>
+                    <img src={Decor} alt="Decor"></img>
                 
             </div>
         )

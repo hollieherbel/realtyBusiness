@@ -1,34 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
+
+
+export default function (props) {
 
 
 
-export default class Listings extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            address: "",
-            city: ""
-        }
-        
-    }
-
-    componentDidMount() {
-        this.setState({
-            address: this.props.address,
-            city: this.props.city
-        })
-    }
- 
-
-
-
-    render() {
-        return (
-            <div className='listings-wrapper'>
-              <h1>{this.state.address}</h1>
-             
-            </div>
-        )
-    }
+    return (
+        <div className='manage-listing-details'>
+            <div className="listing-detail">{props.address}</div> 
+            <div className="listing-detail">{props.city}</div>
+            <div className="listing-detail">{props.state}</div>
+            <div className="listing-detail">{props.zipcode}</div>
+            
+        </div>
+    )
 }
