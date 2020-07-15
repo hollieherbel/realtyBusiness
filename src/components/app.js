@@ -8,23 +8,27 @@ import Contact from './pages/contact';
 
 
 
+
+
 export default class App extends Component {
   constructor(props) {
     super(props) 
       this.state={
-        listingList: []
-      
+        listingList: [],
+        deleteListing: false
+
       }
 
       this.getListings = this.getListings.bind(this)
       this.renderListings = this.renderListings.bind(this)
-    
+
+
   }
-  
+
     componentDidMount() {
       this.getListings()
     }
- 
+
 
     getListings() {
         fetch("http://127.0.0.1:5000/listing/get", { method: "GET" })
@@ -36,16 +40,21 @@ export default class App extends Component {
     renderListings() {
       return this.state.listingList.map(listing => {
         return <Listings 
-        key={listing.id}
+        id={listing.id}
         address={listing.address}
         city={listing.city}
         state={listing.state}
         zipcode={listing.zipcode}
         />
-          
+
       })
   }
+
   
+
+
+
+
   render() {
     return (
       <div className='app'>
@@ -53,15 +62,14 @@ export default class App extends Component {
         <Navigation />
           <Switch>
           <Route exact path="/"component={Home} />
-          <Route exact path="/listings" 
-          render={props => <Listings 
-          address={this.renderListings(this.state.address, this.state.city, this.state.state, this.state.zipcode)} 
-          {...props} />} />
+          <Route exact path="/listings"
+          id={this.state.id}
+          render={props => <Listings
+          address={this.renderListings(this.state.address, this.state.city, this.state.state, this.state.zipcode)} {...props} />} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
         </Switch>
      </Router> 
-
       </div>
     );
   }
