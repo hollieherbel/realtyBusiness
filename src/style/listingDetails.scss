@@ -8,4 +8,28 @@
         font-size: 22px;
         color: rgb(76, 160, 101);
     }
+
+    .listing-button-delete {
+        background-color: rgb(218, 180, 111);
+        width: 100px;
+        height: 35px;
+        color: white;
+        border: none; 
+        font-family: 'Noto Sans HK', sans-serif;
+        font-size: 15px;
+        border-radius: 5px;
+
+    }
+
+    .listing-button-add {
+        background-color: rgb(76, 160, 108);
+        width: 100px;
+        height: 35px;
+        color: white;
+        border: none; 
+        font-family: 'Noto Sans HK', sans-serif;
+        font-size: 15px;
+        border-radius: 5px;
+    }
 }
+

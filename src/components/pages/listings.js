@@ -55,11 +55,11 @@ export default class  extends Component {
                 <div className="listing-detail">{this.props.city}</div>
                 <div className="listing-detail">{this.props.state}</div>
                 <div className="listing-detail">{this.props.zipcode}</div>
-                <button onClick={this.deleteListing}>Delete Listing</button>
+                <button className="listing-button-delete" onClick={this.deleteListing}>Delete</button>
                 
                 <div className="add-listing">
                 <ReactModal 
-                    className="login-modal-wrapper" 
+                    className="add-listing-modal-wrapper" 
                     onRequestClose={this.toggleListingModal} 
                     isOpen={this.state.modalOpen} 
                     style={{
@@ -99,7 +99,7 @@ export default class  extends Component {
                         
                     </div>
                     </ReactModal>
-                    <button onClick={this.toggleListingModal}>Add Listing</button>
+                    <button className="listing-button-add" onClick={this.toggleListingModal}>Add Listing</button>
                 </div>
             </div>
         )

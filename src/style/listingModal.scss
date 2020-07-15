@@ -1,4 +1,4 @@
-.login-modal-wrapper {
+.add-listing-modal-wrapper {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -8,7 +8,7 @@
     height: 300px;
     max-height: 100%;
 
-    .login-wrapper {
+    .add-listing-wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -37,12 +37,13 @@
     
     .modal-button {
         background-color: rgb(76, 160, 108);
-        width: 150px;
-        height: 45px;
+        width: 100px;
+        height: 35px;
         color: white;
         border: none; 
         font-family: 'Noto Sans HK', sans-serif;
-        font-size: 20px;
+        font-size: 15px;
+        border-radius: 5px;
 
         &:hover {
            background-color: rgb(216, 184, 114);  
