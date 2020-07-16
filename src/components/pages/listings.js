@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 
+
 export default class  extends Component {
     constructor(props) {
         super(props)
@@ -12,14 +13,30 @@ export default class  extends Component {
             address: '',
             city: '',
             state: '',
-            zipcode: ''
+            zipcode: 0
+ 
         }
 
         this.deleteListing = this.deleteListing.bind(this)
         this.toggleListingModal = this.toggleListingModal.bind(this)
+        this.addListing = this.addListing.bind(this)
+        this.listingAdded = this.listingAdded.bind(this)
     }
 
     
+    toggleListingModal() {
+        if (this.state.modalOpen === false) {
+            this.setState({
+                modalOpen: true
+            })
+        } 
+        else {
+            this.setState({
+                modalOpen: false
+            })
+        } 
+    }
+
 
     deleteListing(props) {
         fetch(`http://127.0.0.1:5000/listing/delete/${this.props.id}`, { method: "DELETE" })
@@ -33,31 +50,43 @@ export default class  extends Component {
     })
   }
 
-  
-  toggleListingModal() {
-    if (this.state.modalOpen === false) {
-        this.setState({
-            modalOpen: true
+
+    addListing() {
+        fetch("http://127.0.0.1:5000/listing/add", { 
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({
+                address: this.state.address,
+                city: this.state.city,
+                state: this.state.state,
+                zipcode: this.state.zipcode
+            })
         })
-    } 
-    else {
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
+
+        this.props.getListings
+    }
+
+    
+    listingAdded() {
         this.setState({
-            modalOpen: false
+            [event.target.name]: event.target.value
         })
-    } 
-}
+    }
 
 
     render() {
         return (
-            <div className='manage-listing-details'>
+            <div className="manage-listing-details">
                 <div className="listing-detail">{this.props.address}</div> 
                 <div className="listing-detail">{this.props.city}</div>
                 <div className="listing-detail">{this.props.state}</div>
                 <div className="listing-detail">{this.props.zipcode}</div>
                 <button className="listing-button-delete" onClick={this.deleteListing}>Delete</button>
-                
                 <div className="add-listing">
+                <button className="listing-button-add" onClick={this.toggleListingModal}>Add Listing</button>
                 <ReactModal 
                     className="add-listing-modal-wrapper" 
                     onRequestClose={this.toggleListingModal} 
@@ -84,24 +113,42 @@ export default class  extends Component {
                     ><div className="add-listing-wrapper">
                         <h3 className="text-wrapper">Add a Listing</h3> 
                         <input className="input-box" type="text" 
-                        placeholder="Address">      
+                        placeholder="Address"
+                        name="address"
+                        value={this.state.address}
+                        onChange={this.listingAdded}>     
                         </input>
                         <input className="input-box" type="text" 
-                        placeholder="City"> 
+                        placeholder="City"
+                        name="city"
+                        value={this.state.city}
+                        onChange={this.listingAdded}>
                         </input>
                         <input className="input-box" type="text"
-                        placeholder="State">
+                        placeholder="State"
+                        name="state"
+                        value={this.state.state}
+                        onChange={this.listingAdded}
+                        maxLength="2"> 
                         </input>
                         <input className="input-box" type="text"
-                        placeholder="Zipcode">
-                        </input>
-                        <button className="modal-button">Submit</button>
+                        placeholder= "zipcode"
+                        name="zipcode"
+                        value={this.state.zipcode}
+                        onChange={this.listingAdded}>
+                       </input>
+                        <button className="modal-button" type="submit" onClick={() => {
+                        this.addListing();
+                        this.toggleListingModal();
+                        }}>Submit</button>
                         
                     </div>
                     </ReactModal>
-                    <button className="listing-button-add" onClick={this.toggleListingModal}>Add Listing</button>
+                    
                 </div>
+                
             </div>
+            
         )
     }
 }

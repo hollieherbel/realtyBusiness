@@ -10,6 +10,7 @@ import Contact from './pages/contact';
 
 
 
+
 export default class App extends Component {
   constructor(props) {
     super(props) 
@@ -21,8 +22,6 @@ export default class App extends Component {
 
       this.getListings = this.getListings.bind(this)
       this.renderListings = this.renderListings.bind(this)
-
-
   }
 
     componentDidMount() {
@@ -53,6 +52,9 @@ export default class App extends Component {
   
 
 
+  
+
+
 
 
   render() {
@@ -63,6 +65,8 @@ export default class App extends Component {
           <Switch>
           <Route exact path="/"component={Home} />
           <Route exact path="/listings"
+          addListing={this.addListing}
+          getListings={this.getListings}
           id={this.state.id}
           render={props => <Listings
           address={this.renderListings(this.state.address, this.state.city, this.state.state, this.state.zipcode)} {...props} />} />
