@@ -20,7 +20,7 @@
         margin-left: 150px;
         margin-top: 60px;
         border-radius: 5px;
-         color: transparent;
+        color: transparent;
     }
 
     .second-home-color-block {
@@ -33,5 +33,35 @@
         margin-left: 725px;
         border-radius: 5px;
         color: transparent;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .homepage-wrapper {
+        display: flex;
+        flex-direction: row;
+  
+  
+        img {
+            margin-left: 100px;
+            margin-top: 100px;
+            max-width: 170px;
+            max-height: 112px;
+        }
+  
+        .home-color-block {
+            margin-left: 50px;
+            margin-top: 80px;
+            width: 100px;
+            height: 150px;
+        }
+  
+        .second-home-color-block {
+            margin-left: 200px;
+            margin-top: 75px;
+            width: 120px;
+            height: 180px;
+        }
     }
 }

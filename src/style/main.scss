@@ -4,6 +4,7 @@
 @import "./about.scss";
 @import "./contact.scss";
 @import "./listingModal.scss";
+@import "./mediaQueries.scss";
 
 body {
     margin: 0px;
@@ -11,3 +12,11 @@ body {
     background-color: rgb(255, 255, 255);
 }
 
+@media (max-width: 600) {
+    body {
+
+    
+    margin-left: 0px;
+    margin-right: 0px
+}
+}
