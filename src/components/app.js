@@ -16,12 +16,13 @@ export default class App extends Component {
     super(props) 
       this.state={
         listingList: [],
-        deleteListing: false
+        deleteListing: false,
+        address: ''
 
       }
 
       this.getListings = this.getListings.bind(this)
-      this.renderListings = this.renderListings.bind(this)
+      
   }
 
     componentDidMount() {
@@ -36,22 +37,9 @@ export default class App extends Component {
         .catch(error => console.log(error))
     }
 
-    renderListings() {
-      return this.state.listingList.map(listing => {
-        return <Listings 
-        id={listing.id}
-        address={listing.address}
-        city={listing.city}
-        state={listing.state}
-        zipcode={listing.zipcode}
-        />
-
-      })
-  }
-
-  
 
 
+    
   
 
 
@@ -65,11 +53,7 @@ export default class App extends Component {
           <Switch>
           <Route exact path="/"component={Home} />
           <Route exact path="/listings"
-          addListing={this.addListing}
-          getListings={this.getListings}
-          id={this.state.id}
-          render={props => <Listings
-          address={this.renderListings(this.state.address, this.state.city, this.state.state, this.state.zipcode)} {...props} />} />
+          render={() => <Listings listingList={this.state.listingList} />} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
         </Switch>

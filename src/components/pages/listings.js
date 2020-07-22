@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 
 
+
+
 export default class  extends Component {
     constructor(props) {
         super(props)
@@ -13,7 +15,7 @@ export default class  extends Component {
             address: '',
             city: '',
             state: '',
-            zipcode: 0
+            zipcode: undefined
  
         }
 
@@ -21,6 +23,9 @@ export default class  extends Component {
         this.toggleListingModal = this.toggleListingModal.bind(this)
         this.addListing = this.addListing.bind(this)
         this.listingAdded = this.listingAdded.bind(this)
+        this.renderListings = this.renderListings.bind(this)
+        
+        
     }
 
     
@@ -77,14 +82,39 @@ export default class  extends Component {
     }
 
 
+    renderListings(props){
+        this.props.listingList.map(listing => {
+            id=listing.id
+            address=listing.address
+            city=listing.city
+            state=listing.state
+            zipcode=listing.zipcode
+        })
+    }
+  
+ 
+  
+   
+
     render() {
         return (
             <div className="manage-listing-details">
-                <div className="listing-detail">{this.props.address}</div> 
-                <div className="listing-detail">{this.props.city}</div>
-                <div className="listing-detail">{this.props.state}</div>
-                <div className="listing-detail">{this.props.zipcode}</div>
-                <button className="listing-button-delete" onClick={this.deleteListing}>Delete</button>
+                
+                {this.props.listingList.map((listing, index) => (
+                    <h4 className="listing-detail"> 
+                        {listing.address}<br /> 
+                        {listing.city}<br />
+                        {listing.state}<br />
+                        {listing.zipcode}<br />
+                        
+                    <button className="listing-button-delete" onClick={this.deleteListing}>Delete</button>    
+                    </h4>
+                    
+                ))}
+                
+
+
+                
                 <div className="add-listing">
                 <button className="listing-button-add" onClick={this.toggleListingModal}>Add Listing</button>
                 <ReactModal 
