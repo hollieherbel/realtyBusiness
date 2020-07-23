@@ -45,7 +45,7 @@ export default class  extends Component {
     deleteListing(props) {
         this.props.listingList.filter(listing => { 
          
-        fetch(`https://quiet-fjord-64460.herokuapp.com/listing/delete/${listing.id}`, { method: "DELETE" })
+        fetch(`https://olivetree-backend.herokuapp.com/${listing.id}`, { method: "DELETE" })
         .then(response => {
           console.log(response)
           })
@@ -57,7 +57,7 @@ export default class  extends Component {
 
 
     addListing() {
-        fetch("https://quiet-fjord-64460.herokuapp.com/listing/add", { 
+        fetch("https://olivetree-backend.herokuapp.com/listing/add", { 
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({
