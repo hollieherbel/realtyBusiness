@@ -9,8 +9,7 @@ export default class  extends Component {
         super(props)
 
         this.state = {
-            newListingList: '',
-            addedListing: '',
+            listingId: undefined,
             modalOpen: false,
             address: '',
             city: '',
@@ -23,7 +22,7 @@ export default class  extends Component {
         this.toggleListingModal = this.toggleListingModal.bind(this)
         this.addListing = this.addListing.bind(this)
         this.listingAdded = this.listingAdded.bind(this)
-        this.renderListings = this.renderListings.bind(this)
+        
         
         
     }
@@ -44,13 +43,14 @@ export default class  extends Component {
 
 
     deleteListing(props) {
-        fetch(`http://127.0.0.1:5000/listing/delete/${this.props.id}`, { method: "DELETE" })
+        this.props.listingList.filter(listing => { 
+         
+        fetch(`http://127.0.0.1:5000/listing/delete/${listing.id}`, { method: "DELETE" })
         .then(response => {
-          this.setState({
-            newListingList: props.addresses
+          console.log(response)
           })
-  
-      return response.data}).catch(error => { 
+        return response.data.id
+        }).catch(error => { 
         console.log("deleteListing", error)
     })
   }
@@ -80,18 +80,6 @@ export default class  extends Component {
             [event.target.name]: event.target.value
         })
     }
-
-
-    renderListings(props){
-        this.props.listingList.map(listing => {
-            id=listing.id
-            address=listing.address
-            city=listing.city
-            state=listing.state
-            zipcode=listing.zipcode
-        })
-    }
-  
  
   
    
@@ -107,7 +95,8 @@ export default class  extends Component {
                         {listing.state}<br />
                         {listing.zipcode}<br />
                         
-                    <button className="listing-button-delete" onClick={this.deleteListing}>Delete</button>    
+                    <button className="listing-button-delete" onClick={() => this.deleteListing(listing.id)}>Delete</button>    
+                    
                     </h4>
                     
                 ))}
