@@ -42,3 +42,29 @@
         }
     }
 }
+
+
+
+@media (max-width: 700px) {
+
+
+    .manage-listing-details {
+
+        .listing-detail {
+            font-size: 15px;
+        }
+
+        .listing-button-delete {
+            width: 60px;
+            height: 20px;
+            font-size: 9px;
+        }
+
+        .listing-button-add {
+            width: 60px;
+            height: 20px;
+            font-size: 9px;
+            margin-top: 0px;
+        }
+    }
+}

@@ -82,6 +82,10 @@ export default class  extends Component {
     }
  
   
+    componentDidUpdate() {
+        console.log("updated") 
+
+    }
    
 
     render() {
