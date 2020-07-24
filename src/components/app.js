@@ -31,7 +31,7 @@ export default class App extends Component {
 
 
     getListings() {
-        fetch("https://olivetree-backend.herokuapp.com/listing/get", { method: "GET" })
+        fetch("http://127.0.0.1:5000/listing/get", { method: "GET" })
         .then(response => response.json())
         .then(data => this.setState({ listingList: data }))
         .catch(error => console.log(error))
@@ -39,10 +39,7 @@ export default class App extends Component {
 
 
 
-    
   
-
-
 
 
   render() {

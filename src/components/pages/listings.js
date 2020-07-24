@@ -9,7 +9,7 @@ export default class  extends Component {
         super(props)
 
         this.state = {
-            listingId: undefined,
+            listings: undefined,
             modalOpen: false,
             address: '',
             city: '',
@@ -22,6 +22,7 @@ export default class  extends Component {
         this.toggleListingModal = this.toggleListingModal.bind(this)
         this.addListing = this.addListing.bind(this)
         this.listingAdded = this.listingAdded.bind(this)
+        this.handleListingAddDelete = this.handleListingAddDelete.bind(this)
         
         
         
@@ -42,29 +43,30 @@ export default class  extends Component {
     }
 
 
-    deleteListing(props) {
-        this.props.listingList.filter(listing => { 
-         
-        fetch(`https://olivetree-backend.herokuapp.com/${listing.id}`, { method: "DELETE" })
+    deleteListing() {
+       
+        this.props.listingList.map(each => { 
+
+        fetch(`http://127.0.0.1:5000/listing/delete/${each.id}`, { method: "DELETE" })
         .then(response => {
-          console.log(response)
+         console.log(response)
           })
         return response.data.id
         }).catch(error => { 
         console.log("deleteListing", error)
     })
-  }
-
+  
+}
 
     addListing() {
-        fetch("https://olivetree-backend.herokuapp.com/listing/add", { 
+        fetch("http://127.0.0.1:5000/listing/add", { 
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({
                 address: this.state.address,
                 city: this.state.city,
                 state: this.state.state,
-                zipcode: this.state.zipcode
+                zipcode: this.state.zipcode     
             })
         })
         .then(response => response.json())
@@ -75,31 +77,40 @@ export default class  extends Component {
     }
 
     
+    
     listingAdded() {
         this.setState({
             [event.target.name]: event.target.value
         })
     }
  
-  
-    componentDidUpdate() {
-        console.log("updated") 
 
+    handleListingAddDelete() {
+        window.location.reload(true)
     }
+   
+  
    
 
     render() {
         return (
             <div className="manage-listing-details">
                 
-                {this.props.listingList.map((listing, index) => (
-                    <h4 className="listing-detail"> 
+                {this.props.listingList.map(listing => (
+
+                    <h4 key={listing.id} className="listing-detail">
+                        
                         {listing.address}<br /> 
                         {listing.city}<br />
                         {listing.state}<br />
                         {listing.zipcode}<br />
                         
-                    <button className="listing-button-delete" onClick={() => this.deleteListing(listing.id)}>Delete</button>    
+                    <button className="listing-button-delete" 
+                    onClick={() => {
+                    this.handleListingAddDelete();
+                    this.deleteListing();
+                    
+                    }}>Delete</button>    
                     
                     </h4>
                     
@@ -109,7 +120,9 @@ export default class  extends Component {
 
                 
                 <div className="add-listing">
-                <button className="listing-button-add" onClick={this.toggleListingModal}>Add Listing</button>
+                <button className="listing-button-add" onClick={() => {
+                        this.toggleListingModal();
+                        }}>Add Listing</button>
                 <ReactModal 
                     className="add-listing-modal-wrapper" 
                     onRequestClose={this.toggleListingModal} 
@@ -163,6 +176,8 @@ export default class  extends Component {
                         <button className="modal-button" type="submit" onClick={() => {
                         this.addListing();
                         this.toggleListingModal();
+                        this.handleListingAddDelete();
+                        
                         }}>Submit</button>
                         
                     </div>
