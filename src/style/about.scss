@@ -38,23 +38,23 @@
     .about-wrapper {
         
         img {
-        margin-left: 25px;
-        height: 300px;
+        margin-left: 50px;
+        height: 350px;
+        margin-top: 80px;
        
     }
 
     .about-color-block {
         position: absolute;
-        margin-left: 120px;
-        width: 250px;
-        height: 380px;
+        width: 60%;
+        height: 110%;
         z-index: -1;
         margin-right: 0px;
-
+        margin-left: 100px;
 
         .about-info {
-            margin-left: 125px;
-            margin-top: 25px;
+            margin-left: 20%;
+            margin-top: 400px;
             font-size: 12px;
         }
     }
