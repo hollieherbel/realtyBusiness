@@ -9,7 +9,7 @@ export default class  extends Component {
         super(props)
 
         this.state = {
-            listings: undefined,
+            listing: undefined,
             modalOpen: false,
             address: '',
             city: '',
@@ -22,9 +22,8 @@ export default class  extends Component {
         this.toggleListingModal = this.toggleListingModal.bind(this)
         this.addListing = this.addListing.bind(this)
         this.listingAdded = this.listingAdded.bind(this)
-        this.handleListingAddDelete = this.handleListingAddDelete.bind(this)
-        
-        
+        this.handleRefresh = this.handleRefresh.bind(this)
+  
         
     }
 
@@ -43,20 +42,20 @@ export default class  extends Component {
     }
 
 
-    deleteListing() {
-       
-        this.props.listingList.map(each => { 
 
-        fetch(`http://127.0.0.1:5000/listing/delete/${each.id}`, { method: "DELETE" })
+    deleteListing(id) {
+     
+     fetch(`http://127.0.0.1:5000/listing/delete/${id}`, { method: "DELETE" })
         .then(response => {
          console.log(response)
           })
         return response.data.id
-        }).catch(error => { 
+        .catch(error => { 
         console.log("deleteListing", error)
     })
   
 }
+
 
     addListing() {
         fetch("http://127.0.0.1:5000/listing/add", { 
@@ -85,7 +84,7 @@ export default class  extends Component {
     }
  
 
-    handleListingAddDelete() {
+    handleRefresh() {
         window.location.reload(true)
     }
    
@@ -98,19 +97,20 @@ export default class  extends Component {
                 
                 {this.props.listingList.map(listing => (
 
-                    <h4 key={listing.id} className="listing-detail">
+                    <h4 className="listing-detail" >
                         
                         {listing.address}<br /> 
                         {listing.city}<br />
                         {listing.state}<br />
                         {listing.zipcode}<br />
                         
+
+                        
                     <button className="listing-button-delete" 
-                    onClick={() => {
-                    this.handleListingAddDelete();
-                    this.deleteListing();
                     
-                    }}>Delete</button>    
+                    onClick={() => 
+                    
+                    {this.handleRefresh(); this.deleteListing(listing.id);}}>Delete</button>    
                     
                     </h4>
                     
@@ -176,7 +176,7 @@ export default class  extends Component {
                         <button className="modal-button" type="submit" onClick={() => {
                         this.addListing();
                         this.toggleListingModal();
-                        this.handleListingAddDelete();
+                        this.handleRefresh();
                         
                         }}>Submit</button>
                         
