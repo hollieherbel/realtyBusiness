@@ -45,7 +45,7 @@ export default class  extends Component {
 
     deleteListing(id) {
      
-     fetch(`http://127.0.0.1:5000/listing/delete/${id}`, { method: "DELETE" })
+     fetch(`https://olivetree-backend.herokuapp.com/listing/delete/${id}`, { method: "DELETE" })
         .then(response => {
          console.log(response)
           })
@@ -58,7 +58,7 @@ export default class  extends Component {
 
 
     addListing() {
-        fetch("http://127.0.0.1:5000/listing/add", { 
+        fetch("https://olivetree-backend.herokuapp.com/listing/add", { 
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({
