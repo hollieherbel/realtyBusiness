@@ -9,7 +9,7 @@ export default class  extends Component {
         super(props)
 
         this.state = {
-            listing: undefined,
+            listings: this.props.listingList,
             modalOpen: false,
             address: '',
             city: '',
@@ -46,10 +46,12 @@ export default class  extends Component {
     deleteListing(id) {
      
      fetch(`https://olivetree-backend.herokuapp.com/listing/delete/${id}`, { method: "DELETE" })
-        .then(response => {
-         console.log(response)
+       .then 
+        (response => {
+             this.handleRefresh(true)
           })
-        return response.data.id
+        return response.data
+
         .catch(error => { 
         console.log("deleteListing", error)
     })
@@ -65,14 +67,19 @@ export default class  extends Component {
                 address: this.state.address,
                 city: this.state.city,
                 state: this.state.state,
-                zipcode: this.state.zipcode     
+                zipcode: this.state.zipcode  
+   
             })
-        })
+            
+        }) 
+        
         .then(response => response.json())
         .then(data => console.log(data))
         .catch(error => console.log(error))
+        
 
-        this.props.getListings
+      this.handleRefresh(true)
+       
     }
 
     
@@ -85,7 +92,7 @@ export default class  extends Component {
  
 
     handleRefresh() {
-        window.location.reload(true)
+        window.location.reload()
     }
    
   
@@ -110,7 +117,7 @@ export default class  extends Component {
                     
                     onClick={() => 
                     
-                    {this.handleRefresh(); this.deleteListing(listing.id);}}>Delete</button>    
+                    {this.deleteListing(listing.id);}}>Delete</button>    
                     
                     </h4>
                     
@@ -174,9 +181,8 @@ export default class  extends Component {
                         onChange={this.listingAdded}>
                        </input>
                         <button className="modal-button" type="submit" onClick={() => {
-                        this.addListing();
                         this.toggleListingModal();
-                        this.handleRefresh();
+                        this.addListing();
                         
                         }}>Submit</button>
                         
